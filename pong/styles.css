@@ -1,0 +1,96 @@
+/* Reset default margin/padding for clean design */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style the body to create a sleek, centered game display */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #1c1c1c, #3a3a3a);
+    font-family: 'Roboto', sans-serif;
+    position: relative; /* Ensure absolute positioning for elements like title and sound controls */
+}
+
+/* Styling for the canvas */
+canvas {
+    border: 3px solid #fff;
+    background: radial-gradient(circle, rgba(34, 34, 34, 1) 0%, rgba(0, 0, 0, 1) 100%);
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+    animation: pulse 3s infinite;
+}
+
+/* Adding a pulsing glow effect to the canvas */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    }
+}
+
+/* Styling the score display */
+.score {
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+/* Title for the game */
+canvas::before {
+    content: 'Pong Game';
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 32px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Style for the sound effect controls */
+.sound-controls {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    display: flex;
+    gap: 10px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.sound-controls button {
+    background: #444;
+    border: 1px solid #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.sound-controls button:hover {
+    background: #555;
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+/* Animation for paddle movement and ball to feel smoother */
+@keyframes move {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+    100% { transform: translateY(0); }
+}
+
+.paddle {
+    animation: move 0.5s ease-in-out;
+}
